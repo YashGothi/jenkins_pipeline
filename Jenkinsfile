@@ -13,7 +13,7 @@ pipeline {
                 sh '''
                     python3 -m venv venv
                     . venv/bin/activate
-                    // pip install --no-cache-dir -r requirements.txt
+                    pip install --no-cache-dir -r requirements.txt
                 '''
             }
         }
@@ -31,7 +31,7 @@ pipeline {
             steps {
                 sh '''
                     . venv/bin/activate
-                    // python calculator.py
+                    python calculator.py
                 '''
             }
         }
