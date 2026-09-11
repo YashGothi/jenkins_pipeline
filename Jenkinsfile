@@ -10,19 +10,29 @@ pipeline {
 
         stage('Install Dependencies') {
             steps {
-                sh 'pip install --no-cache-dir -r requirements.txt'
+                sh '''
+                    python3 -m venv venv
+                    . venv/bin/activate
+                    pip install --no-cache-dir -r requirements.txt
+                '''
             }
         }
 
         stage('Run Tests') {
             steps {
-                sh 'pytest -v'
+                sh '''
+                    . venv/bin/activate
+                    pytest -v
+                '''
             }
         }
 
         stage('Run Script') {
             steps {
-                sh 'python calculator.py'
+                sh '''
+                    . venv/bin/activate
+                    python calculator.py
+                '''
             }
         }
     }
